@@ -1,4 +1,7 @@
-import type { JSX, CSSProperties } from "react";
+"use client";
+
+import { useState, useEffect, type JSX, type CSSProperties } from "react";
+import Image from "next/image";
 
 interface SocialLink {
   name: string;
@@ -42,7 +45,7 @@ const serviceItems: ServiceItem[] = [
     description: "(Excel, Word, PowerPoint, etc.)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -60,7 +63,7 @@ const serviceItems: ServiceItem[] = [
     description: "(Frontend, basic backend, etc.)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -78,7 +81,7 @@ const serviceItems: ServiceItem[] = [
     description: "(Scripts, bug fixes, basic projects, etc.)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -96,7 +99,7 @@ const serviceItems: ServiceItem[] = [
     description: "(WhatsApp Business, Payment Gateway, etc.)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -114,7 +117,7 @@ const serviceItems: ServiceItem[] = [
     description: "(Data cleaning, charts, reports, etc.)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -132,7 +135,7 @@ const serviceItems: ServiceItem[] = [
     description: "(Posts, banners, presentations – Canva, etc.)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -150,7 +153,7 @@ const serviceItems: ServiceItem[] = [
     description: "(Research, content, summaries, etc.)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -168,7 +171,7 @@ const serviceItems: ServiceItem[] = [
     description: "(Academic or general desktop tasks)",
     icon: (
       <svg
-        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        className="w-5 h-5 sm:w-6 sm:h-6 md:w-6.5 md:h-6.5 lg:w-7 lg:h-7 stroke-current"
         fill="none"
         strokeWidth="1.75"
         viewBox="0 0 24 24"
@@ -255,6 +258,26 @@ const socialLinks: SocialLink[] = [
 ];
 
 export default function Home() {
+  const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsPhotoOpen(false);
+      }
+    };
+    if (isPhotoOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPhotoOpen]);
+
   return (
     <main className="relative flex min-h-screen w-full flex-col items-center pt-25 px-4 sm:px-6 md:px-8 overflow-hidden bg-obsidian">
       {/* 
@@ -354,7 +377,7 @@ export default function Home() {
         Value Proposition / Services Intro Section:
         Positioned below the hero buttons with generous breathing room.
       */}
-      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center mt-20 sm:mt-24 md:mt-28 pb-24 sm:pb-32 px-4">
+      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center mt-20 sm:mt-24 md:mt-28 pb-4 sm:pb-6 px-4">
         {/* Main Section Heading */}
         <h2 className="font-playwrite text-[clamp(1.35rem,3.2vw,2.25rem)] font-normal text-text-primary leading-snug">
           Have a task but short on time?
@@ -448,23 +471,23 @@ export default function Home() {
           - Mobile view: Single column vertical stack
           - Clean, minimal layout without outer card backgrounds
         */}
-        <div className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16 gap-y-6 sm:gap-y-7 md:gap-y-8 w-full max-w-4xl mx-auto text-left">
+        <div className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-10 lg:gap-x-12 xl:gap-x-14 gap-y-5 sm:gap-y-6 md:gap-y-7 w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto text-left">
           {serviceItems.map((service) => (
             <div
               key={service.title}
-              className="group flex items-start gap-3.5 sm:gap-4.5 py-1"
+              className="group flex items-start gap-3.5 sm:gap-4.5 md:gap-5 lg:gap-6 py-1 md:py-1.5"
             >
-              {/* Icon Container */}
-              <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/4 border border-white/10 text-text-primary shrink-0 transition-transform duration-300 group-hover:scale-105">
+              {/* Icon Container: Larger tile on desktop, unchanged on mobile */}
+              <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-13 md:h-13 lg:w-14 lg:h-14 rounded-xl md:rounded-2xl bg-white/4 border border-white/10 text-text-primary shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:border-white/20">
                 {service.icon}
               </div>
 
-              {/* Content */}
+              {/* Content: Slightly larger on desktop, completely unchanged on mobile */}
               <div className="flex-1 min-w-0">
-                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] font-semibold text-text-primary tracking-[-0.01em] leading-snug">
+                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] md:text-[1.15rem] lg:text-[1.25rem] font-semibold text-text-primary tracking-[-0.01em] leading-snug">
                   {service.title}
                 </h4>
-                <p className="mt-1 font-sans text-xs sm:text-[0.875rem] text-text-secondary font-normal leading-relaxed">
+                <p className="mt-1 md:mt-1.5 font-sans text-xs sm:text-[0.875rem] md:text-[0.95rem] lg:text-[1rem] text-text-secondary font-normal leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -472,6 +495,146 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* 
+        Profile / About Me Section:
+        - Desktop: Photo on the left, Name and Designation on the right.
+        - Mobile: Vertically stacked, centered photo, name, and designation.
+      */}
+      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto mt-14 sm:mt-18 md:mt-24 pb-24 sm:pb-32 px-4">
+        {/* Subtle decorative divider line */}
+        <div
+          className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12 sm:mb-14 md:mb-16"
+          aria-hidden="true"
+        />
+
+        <div className="flex flex-col md:flex-row items-center justify-center gap-5 sm:gap-6 md:gap-8 lg:gap-10 text-center md:text-left">
+          {/* Profile Photo - Clickable to open full-screen */}
+          <div className="relative shrink-0">
+            <button
+              type="button"
+              onClick={() => setIsPhotoOpen(true)}
+              className="group/photo relative block rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 cursor-zoom-in transition-transform duration-300 hover:scale-105 active:scale-100"
+              aria-label="View profile photo full screen"
+            >
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden ring-2 ring-white/15 ring-offset-4 ring-offset-obsidian shadow-[0_0_35px_-5px_rgba(226,177,93,0.15)] transition-all duration-300 group-hover/photo:ring-white/35 group-hover/photo:shadow-[0_0_45px_rgba(226,177,93,0.25)]">
+                <Image
+                  src="/profile.jpeg"
+                  alt="Nikhil Jaiswal"
+                  fill
+                  sizes="(max-width: 768px) 128px, 160px"
+                  className="object-cover object-center transition-transform duration-500 group-hover/photo:scale-105"
+                  priority
+                />
+              </div>
+            </button>
+          </div>
+
+          {/* Name, Designation & CV Button */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="font-oswald text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] font-normal text-text-primary tracking-[-0.01em] leading-tight">
+              Nikhil Jaiswal
+            </h3>
+            <p className="mt-1 sm:mt-1.5 md:mt-2 font-sans text-[clamp(0.82rem,3.4vw,1.125rem)] text-text-secondary font-normal tracking-wide whitespace-nowrap">
+              Student | Data Science @ IIT Madras
+            </p>
+
+            {/* Action Buttons: My CV & Call Now */}
+            <div className="mt-4 sm:mt-4.5 md:mt-5 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-3.5">
+              {/* My CV Button */}
+              <a
+                href="/MYCV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-brand-red text-text-primary font-playwrite text-[0.85rem] sm:text-[0.95rem] font-normal shadow-[0_4px_20px_-2px_rgba(140,8,8,0.5)] transition-all duration-300 hover:bg-[#a30b0b] hover:shadow-[0_0_25px_rgba(140,8,8,0.7)] hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <span>My CV</span>
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+
+              {/* Call Now Button */}
+              <a
+                href="tel:+916268011085"
+                className="group relative inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-brand-red text-text-primary font-playwrite text-[0.85rem] sm:text-[0.95rem] font-normal shadow-[0_4px_20px_-2px_rgba(140,8,8,0.5)] transition-all duration-300 hover:bg-[#a30b0b] hover:shadow-[0_0_25px_rgba(140,8,8,0.7)] hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <span>Call Now</span>
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:scale-110"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Profile Photo Full-Screen Lightbox Modal */}
+      {isPhotoOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Profile photo full screen view"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/90 backdrop-blur-md cursor-zoom-out"
+          onClick={() => setIsPhotoOpen(false)}
+        >
+          {/* Close Button */}
+          <button
+            type="button"
+            onClick={() => setIsPhotoOpen(false)}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-200 focus:outline-none cursor-pointer"
+            aria-label="Close full screen view"
+          >
+            <svg
+              className="w-5 h-5 sm:w-6 sm:h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          {/* Modal Image Container */}
+          <div
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl max-h-[85vh] aspect-[1160/1356] rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-2xl cursor-default"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src="/profile.jpeg"
+              alt="Nikhil Jaiswal"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
