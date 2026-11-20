@@ -24,6 +24,51 @@ interface ServiceItem {
   icon: JSX.Element;
 }
 
+interface Certification {
+  title: string;
+  pdf: string;
+  description: string;
+}
+
+interface ProjectSite {
+  title: string;
+  url: string;
+  logo: string;
+  description: string;
+}
+
+const projects: ProjectSite[] = [
+  {
+    title: "Tabiji Trails",
+    url: "https://tabijitrails.com",
+    logo: "/tabijitrails.png",
+    description:
+      "A modern travel and experiential tourism platform offering curated itineraries, guided journeys, and seamless online bookings.",
+  },
+  {
+    title: "Star Studios",
+    url: "https://starstudios.in",
+    logo: "/starstudios.png",
+    description:
+      "A creative photography and cinematography portfolio platform showcasing visual storytelling, media production, and studio sessions.",
+  },
+];
+
+const certifications: Certification[] = [
+  {
+    title: "CS50X – Introduction to Computer Science",
+    pdf: "/CS50X.pdf",
+    description:
+      "Harvard's foundational course in computer science, algorithmic thinking, and software development with C, Python, and SQL.",
+  },
+  {
+    title: "CS50 AI – Artificial Intelligence with Python",
+    pdf: "/CS50AI.pdf",
+    description:
+      "Covers modern AI principles and machine learning algorithms using Python, from search algorithms to deep learning neural networks.",
+  },
+];
+
 const processSteps: ProcessStep[] = [
   {
     step: 1,
@@ -501,7 +546,7 @@ export default function Home() {
         - Desktop: Photo on the left, Name and Designation on the right.
         - Mobile: Vertically stacked, centered photo, name, and designation.
       */}
-      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto mt-14 sm:mt-18 md:mt-24 pb-24 sm:pb-32 px-4">
+      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto mt-14 sm:mt-18 md:mt-24 pb-12 sm:pb-14 md:pb-16 px-4">
         {/* Subtle decorative divider line */}
         <div
           className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-12 sm:mb-14 md:mb-16"
@@ -586,6 +631,142 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 
+        Certifications Section:
+        - Heading: "My Certifications" left-aligned on both desktop and mobile
+        - Displays CS50X and CS50 AI in order with descriptions, dates, and direct PDF access
+      */}
+      <section className="relative z-10 w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto pb-12 sm:pb-16 md:pb-20 px-4">
+        {/* Subtle decorative divider line */}
+        <div
+          className="w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-10 sm:mb-12 md:mb-14"
+          aria-hidden="true"
+        />
+
+        {/* Left-aligned Heading on both Desktop and Mobile */}
+        <h3 className="font-playwrite text-[clamp(1.2rem,2.6vw,1.75rem)] font-normal text-text-primary text-left leading-snug">
+          My Certifications
+        </h3>
+
+        {/* Certifications List - Minimal layout without card backgrounds */}
+        <div className="mt-6 sm:mt-8 flex flex-col gap-6 sm:gap-7 w-full text-left">
+          {certifications.map((cert) => (
+            <div
+              key={cert.title}
+              className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 py-1"
+            >
+              <div className="flex-1 min-w-0 pr-0 sm:pr-6">
+                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] md:text-[1.125rem] font-semibold text-text-primary tracking-[-0.01em]">
+                  {cert.title}
+                </h4>
+
+                <p className="mt-1.5 font-sans text-xs sm:text-[0.875rem] md:text-[0.925rem] text-text-secondary font-normal leading-relaxed">
+                  {cert.description}
+                </p>
+              </div>
+
+              {/* View Certificate CTA Button */}
+              <div className="shrink-0 self-start sm:self-center mt-1 sm:mt-0">
+                <a
+                  href={cert.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/btn inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-brand-red text-text-primary font-playwrite text-[0.75rem] sm:text-[0.825rem] font-normal shadow-[0_3px_14px_-2px_rgba(140,8,8,0.45)] transition-all duration-300 hover:bg-[#a30b0b] hover:shadow-[0_0_20px_rgba(140,8,8,0.65)] hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap"
+                >
+                  <span>View Certificate</span>
+                  <svg
+                    className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 
+        Websites Section:
+        - Heading: "Website That I Made" left-aligned on both desktop and mobile
+        - Showcases: Tabiji Trails and Star Studios
+        - Clicking website name or logo opens the corresponding website in a new tab
+        - No buttons
+        - Follows the exact layout and visual format of My Certifications
+      */}
+      <section className="relative z-10 w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto pb-24 sm:pb-32 px-4">
+        {/* Subtle decorative divider line */}
+        <div
+          className="w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-10 sm:mb-12 md:mb-14"
+          aria-hidden="true"
+        />
+
+        {/* Left-aligned Heading on both Desktop and Mobile */}
+        <h3 className="font-playwrite text-[clamp(1.2rem,2.6vw,1.75rem)] font-normal text-text-primary text-left leading-snug">
+          Website That I Made
+        </h3>
+
+        {/* Websites List */}
+        <div className="mt-6 sm:mt-8 flex flex-col gap-6 sm:gap-7 w-full text-left">
+          {projects.map((site) => (
+            <div
+              key={site.title}
+              className="group relative flex flex-col gap-1.5 py-1"
+            >
+              {/* Clickable Header: Logo + Name + External Link Arrow */}
+              <a
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link inline-flex items-center gap-2.5 sm:gap-3 w-fit text-text-primary transition-colors duration-200 hover:text-white"
+              >
+                {/* Logo */}
+                <div className="relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 border border-white/10 p-1 shrink-0 transition-all duration-300 group-hover/link:border-white/25 group-hover/link:bg-white/10 group-hover/link:scale-105">
+                  <Image
+                    src={site.logo}
+                    alt={site.title}
+                    width={28}
+                    height={28}
+                    className="object-contain max-h-full max-w-full"
+                  />
+                </div>
+
+                {/* Title */}
+                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] md:text-[1.125rem] font-semibold tracking-[-0.01em] transition-colors duration-200 group-hover/link:text-white flex items-center gap-1.5">
+                  <span>{site.title}</span>
+                  <svg
+                    className="w-3.5 h-3.5 text-text-secondary opacity-60 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-brand-red"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </h4>
+              </a>
+
+              {/* Description */}
+              <p className="mt-1 font-sans text-xs sm:text-[0.875rem] md:text-[0.925rem] text-text-secondary font-normal leading-relaxed">
+                {site.description}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
