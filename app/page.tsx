@@ -33,7 +33,9 @@ interface Certification {
 interface ProjectSite {
   title: string;
   url: string;
-  logo: string;
+  logo?: string;
+  icon?: JSX.Element;
+  status?: string;
   description: string;
 }
 
@@ -52,6 +54,22 @@ const projects: ProjectSite[] = [
     description:
       "A creative photography and cinematography portfolio platform showcasing visual storytelling, media production, and studio sessions.",
   },
+  {
+    title: "Thenikflow",
+    url: "https://thenikflow.com",
+    logo: "/tnf.png",
+    status: "Discontinued",
+    description:
+      "Thenikflow is a digital media platform and content brand created by Nikhil Jaiswal, focusing on startup stories, essays, career roadmaps, conversations, and curated gear.",
+  },
+];
+
+const termsAndConditions: string[] = [
+  "Payment is mandatory and must be made through a QR code.",
+  "Larger projects, such as full-stack websites or applications, may take longer to complete because I will not compromise on my studies.",
+  "I cannot dedicate full-time availability to any project.",
+  "If a project gets slightly delayed due to unforeseen circumstances, please be patient. You will be informed in advance if any such delay occurs.",
+  "This is an individually operated micro-freelancing service. It is not officially registered with any organization or authority.",
 ];
 
 const certifications: Certification[] = [
@@ -705,7 +723,7 @@ export default function Home() {
         - No buttons
         - Follows the exact layout and visual format of My Certifications
       */}
-      <section className="relative z-10 w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto pb-24 sm:pb-32 px-4">
+      <section className="relative z-10 w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto pb-12 sm:pb-16 md:pb-20 px-4">
         {/* Subtle decorative divider line */}
         <div
           className="w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-10 sm:mb-12 md:mb-14"
@@ -731,22 +749,34 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="group/link inline-flex items-center gap-2.5 sm:gap-3 w-fit text-text-primary transition-colors duration-200 hover:text-white"
               >
-                {/* Logo */}
-                <div className="relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/5 border border-white/10 p-1 shrink-0 transition-all duration-300 group-hover/link:border-white/25 group-hover/link:bg-white/10 group-hover/link:scale-105">
-                  <Image
-                    src={site.logo}
-                    alt={site.title}
-                    width={28}
-                    height={28}
-                    className="object-contain max-h-full max-w-full"
-                  />
-                </div>
+                {/* Logo without background cards or containers */}
+                {site.logo ? (
+                  <div className="relative shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 transition-transform duration-300 group-hover/link:scale-105">
+                    <Image
+                      src={site.logo}
+                      alt={site.title}
+                      width={36}
+                      height={36}
+                      className="object-contain max-h-8 max-w-8 sm:max-h-9 sm:max-w-9"
+                      style={{ width: "auto", height: "auto" }}
+                    />
+                  </div>
+                ) : site.icon ? (
+                  <div className="relative shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-text-primary/80 transition-transform duration-300 group-hover/link:scale-105">
+                    {site.icon}
+                  </div>
+                ) : null}
 
-                {/* Title */}
-                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] md:text-[1.125rem] font-semibold tracking-[-0.01em] transition-colors duration-200 group-hover/link:text-white flex items-center gap-1.5">
+                {/* Title & Status */}
+                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] md:text-[1.125rem] font-semibold tracking-[-0.01em] transition-colors duration-200 group-hover/link:text-white flex items-center gap-2 flex-wrap">
                   <span>{site.title}</span>
+                  {site.status && (
+                    <span className="text-[#EA4335] font-sans text-xs sm:text-[0.825rem] font-medium">
+                      ({site.status})
+                    </span>
+                  )}
                   <svg
-                    className="w-3.5 h-3.5 text-text-secondary opacity-60 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-brand-red"
+                    className="w-3.5 h-3.5 text-text-secondary opacity-60 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-brand-red shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -769,6 +799,47 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* 
+        Footer / Terms & Conditions Section:
+        - Heading: "Terms & Conditions" left-aligned on both desktop and mobile
+        - 5 important conditions clearly enumerated
+        - Concluding agreement statement at the bottom
+      */}
+      <footer className="relative z-10 w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto pb-16 sm:pb-20 md:pb-24 px-4">
+        {/* Subtle decorative divider line */}
+        <div
+          className="w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-10 sm:mb-12 md:mb-14"
+          aria-hidden="true"
+        />
+
+        {/* Left-aligned Heading on both Desktop and Mobile */}
+        <h3 className="font-playwrite text-[clamp(1.2rem,2.6vw,1.75rem)] font-normal text-text-primary text-left leading-snug">
+          Terms & Conditions
+        </h3>
+
+        {/* Numbered Terms Points */}
+        <ol className="mt-6 sm:mt-8 space-y-3.5 sm:space-y-4 text-left">
+          {termsAndConditions.map((term, index) => (
+            <li
+              key={index}
+              className="flex items-start gap-3 sm:gap-3.5 font-sans text-xs sm:text-[0.875rem] md:text-[0.925rem] text-text-secondary font-normal leading-relaxed"
+            >
+              <span className="flex items-center justify-center w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full bg-white/6 border border-white/12 text-[0.65rem] sm:text-[0.7rem] font-sans font-semibold text-text-primary shrink-0 mt-0.5">
+                {index + 1}
+              </span>
+              <span className="flex-1">{term}</span>
+            </li>
+          ))}
+        </ol>
+
+        {/* Concluding Agreement Statement */}
+        <div className="mt-10 sm:mt-12 md:mt-14 pt-6 sm:pt-8 border-t border-white/8 text-center">
+          <p className="font-sans text-xs sm:text-[0.825rem] text-text-secondary/70 tracking-wide">
+            By using our website and services, you agree to our Terms & Conditions.
+          </p>
+        </div>
+      </footer>
 
       {/* Profile Photo Full-Screen Lightbox Modal */}
       {isPhotoOpen && (
