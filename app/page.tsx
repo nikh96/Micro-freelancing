@@ -504,11 +504,11 @@ export default function Home() {
       <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto mt-14 sm:mt-18 md:mt-24 pb-24 sm:pb-32 px-4">
         {/* Subtle decorative divider line */}
         <div
-          className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12 sm:mb-14 md:mb-16"
+          className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto h-px bg-linear-to-r from-transparent via-white/10 to-transparent mb-12 sm:mb-14 md:mb-16"
           aria-hidden="true"
         />
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-5 sm:gap-6 md:gap-8 lg:gap-10 text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-5 sm:gap-6 md:gap-10 lg:gap-14 text-center md:text-left">
           {/* Profile Photo - Clickable to open full-screen */}
           <div className="relative shrink-0">
             <button
@@ -530,27 +530,27 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Name, Designation & CV Button */}
+          {/* Name, Designation & Action Buttons */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="font-oswald text-2xl sm:text-3xl md:text-[2rem] lg:text-[2.25rem] font-normal text-text-primary tracking-[-0.01em] leading-tight">
               Nikhil Jaiswal
             </h3>
-            <p className="mt-1 sm:mt-1.5 md:mt-2 font-sans text-[clamp(0.82rem,3.4vw,1.125rem)] text-text-secondary font-normal tracking-wide whitespace-nowrap">
+            <p className="mt-1 sm:mt-1.5 md:mt-2.5 lg:mt-3 font-sans text-[clamp(0.82rem,3.4vw,1.125rem)] text-text-secondary font-normal tracking-wide whitespace-nowrap">
               Student | Data Science @ IIT Madras
             </p>
 
-            {/* Action Buttons: My CV & Call Now */}
-            <div className="mt-4 sm:mt-4.5 md:mt-5 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-3.5">
+            {/* Action Buttons: My CV & Call Now (refined, sleeker size) */}
+            <div className="mt-4 sm:mt-4.5 md:mt-6 lg:mt-6.5 flex flex-wrap items-center justify-center md:justify-start gap-2.5 sm:gap-3">
               {/* My CV Button */}
               <a
                 href="/MYCV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-brand-red text-text-primary font-playwrite text-[0.85rem] sm:text-[0.95rem] font-normal shadow-[0_4px_20px_-2px_rgba(140,8,8,0.5)] transition-all duration-300 hover:bg-[#a30b0b] hover:shadow-[0_0_25px_rgba(140,8,8,0.7)] hover:-translate-y-0.5 active:translate-y-0"
+                className="group relative inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-1.5 md:px-4.5 md:py-1.5 rounded-full bg-brand-red text-text-primary font-playwrite text-[0.75rem] sm:text-[0.8rem] md:text-[0.85rem] font-normal shadow-[0_3px_14px_-2px_rgba(140,8,8,0.45)] transition-all duration-300 hover:bg-[#a30b0b] hover:shadow-[0_0_20px_rgba(140,8,8,0.65)] hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>My CV</span>
                 <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -567,11 +567,11 @@ export default function Home() {
               {/* Call Now Button */}
               <a
                 href="tel:+916268011085"
-                className="group relative inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-brand-red text-text-primary font-playwrite text-[0.85rem] sm:text-[0.95rem] font-normal shadow-[0_4px_20px_-2px_rgba(140,8,8,0.5)] transition-all duration-300 hover:bg-[#a30b0b] hover:shadow-[0_0_25px_rgba(140,8,8,0.7)] hover:-translate-y-0.5 active:translate-y-0"
+                className="group relative inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-1.5 md:px-4.5 md:py-1.5 rounded-full bg-brand-red text-text-primary font-playwrite text-[0.75rem] sm:text-[0.8rem] md:text-[0.85rem] font-normal shadow-[0_3px_14px_-2px_rgba(140,8,8,0.45)] transition-all duration-300 hover:bg-[#a30b0b] hover:shadow-[0_0_20px_rgba(140,8,8,0.65)] hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>Call Now</span>
                 <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:scale-110"
+                  className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-110"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -622,7 +622,7 @@ export default function Home() {
 
           {/* Modal Image Container */}
           <div
-            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl max-h-[85vh] aspect-[1160/1356] rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-2xl cursor-default"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl max-h-[85vh] aspect-1160/1356 rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-2xl cursor-default"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
