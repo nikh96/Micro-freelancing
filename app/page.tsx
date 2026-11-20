@@ -10,6 +10,26 @@ interface SocialLink {
   icon: JSX.Element;
 }
 
+interface ProcessStep {
+  step: number;
+  title: string;
+}
+
+const processSteps: ProcessStep[] = [
+  {
+    step: 1,
+    title: "Send your details",
+  },
+  {
+    step: 2,
+    title: "Pay 20% advance",
+  },
+  {
+    step: 3,
+    title: "Get it done and pay the rest.",
+  },
+];
+
 const socialLinks: SocialLink[] = [
   {
     name: "Email",
@@ -181,7 +201,7 @@ export default function Home() {
         Value Proposition / Services Intro Section:
         Positioned below the hero buttons with generous breathing room.
       */}
-      <section className="relative z-10 w-full max-w-3xl mx-auto text-center mt-20 sm:mt-24 md:mt-28 pb-24 sm:pb-32 px-4">
+      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl mx-auto text-center mt-20 sm:mt-24 md:mt-28 pb-24 sm:pb-32 px-4">
         {/* Main Section Heading */}
         <h2 className="font-playwrite text-[clamp(1.35rem,3.2vw,2.25rem)] font-normal text-text-primary leading-snug">
           Have a task but short on time?
@@ -192,8 +212,80 @@ export default function Home() {
           Delegate your small or medium desktop work to me and get it done on time and with quality.
         </p>
 
+        {/* 
+          Step-by-step process:
+          - Desktop: Horizontal progression with right-pointing arrows
+          - Mobile: Vertical progression with down-pointing arrows
+        */}
+        <div className="mt-9 sm:mt-11 md:mt-13 flex flex-col md:flex-row items-center justify-center gap-2.5 sm:gap-3 md:gap-2 lg:gap-3 w-full">
+          {processSteps.map((item, idx) => (
+            <div
+              key={item.step}
+              className="flex flex-col md:flex-row items-center justify-center w-full md:w-auto"
+            >
+              {/* Step Item */}
+              <div className="flex items-center gap-3 px-4 py-2.5 sm:py-3 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20">
+                {/* Numbered Circle */}
+                <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-sans font-semibold text-text-primary shrink-0">
+                  {item.step}
+                </span>
+
+                {/* Step Text */}
+                <span className="font-sans text-xs sm:text-sm md:text-[0.925rem] font-medium text-text-primary whitespace-nowrap">
+                  {item.title}
+                </span>
+              </div>
+
+              {/* Arrow Indicator pointing to next step (omitted after last step) */}
+              {idx < processSteps.length - 1 && (
+                <>
+                  {/* Desktop Horizontal Arrow */}
+                  <div
+                    className="hidden md:flex items-center justify-center mx-2 lg:mx-3 text-white/35"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      className="w-4 h-4 lg:w-5 lg:h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.75"
+                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Mobile Vertical Arrow */}
+                  <div
+                    className="flex md:hidden items-center justify-center my-1.5 text-white/35"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.75"
+                        d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+                      />
+                    </svg>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+
         {/* Subheading */}
-        <h3 className="mt-8 sm:mt-10 md:mt-12 font-playwrite text-[clamp(1.15rem,2.4vw,1.65rem)] font-normal text-text-primary leading-snug">
+        <h3 className="mt-12 sm:mt-14 md:mt-16 font-playwrite text-[clamp(1.15rem,2.4vw,1.65rem)] font-normal text-text-primary leading-snug">
           I can help you with:
         </h3>
       </section>
