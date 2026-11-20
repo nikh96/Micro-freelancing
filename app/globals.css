@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-charcoal: #262920;
+  --color-obsidian: #070709;
   --color-brand-red: #8C0808;
   --color-text-primary: #F9F8FA;
   --color-text-secondary: #B4B4B4;
-  --font-serif-condensed: var(--font-noto-serif-ethiopic), var(--font-noto-serif), Georgia, serif;
+  --font-serif-condensed: var(--font-noto-serif), var(--font-noto-serif-ethiopic), Georgia, serif;
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-playwrite: var(--font-playwrite-fr-moderne), cursive;
 }
 
 :root {
-  --bg-charcoal: #262920;
+  --bg-obsidian: #070709;
   --accent-button: #8C0808;
   --accent-x: #8C0808;
   --text-primary: #F9F8FA;
@@ -23,13 +23,13 @@
 }
 
 html {
-  background-color: #262920;
+  background-color: #070709;
   color: #F9F8FA;
   color-scheme: dark;
 }
 
 body {
-  background-color: #262920;
+  background-color: #070709;
   color: #F9F8FA;
   font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
@@ -42,8 +42,9 @@ body {
 
 /* Noto Serif Condensed typography */
 .font-serif-condensed {
-  font-family: var(--font-noto-serif-ethiopic), var(--font-noto-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--font-noto-serif), var(--font-noto-serif-ethiopic), Georgia, Cambria, "Times New Roman", Times, serif;
   font-stretch: 75%;
+  font-variation-settings: "wdth" 75;
 }
 
 /* Playwrite France Moderne for headings & buttons */
