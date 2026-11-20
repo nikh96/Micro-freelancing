@@ -56,7 +56,7 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-[#070709] text-[#F9F8FA] antialiased selection:bg-[#8C0808] selection:text-[#F9F8FA]"
+        className="min-h-screen bg-obsidian text-text-primary antialiased selection:bg-brand-red selection:text-text-primary"
       >
         {children}
       </body>

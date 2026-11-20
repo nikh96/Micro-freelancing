@@ -83,7 +83,7 @@ const socialLinks: SocialLink[] = [
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center pt-[100px] px-4 sm:px-6 md:px-8 overflow-hidden bg-[#070709]">
+    <main className="relative flex min-h-screen w-full flex-col items-center pt-25 px-4 sm:px-6 md:px-8 overflow-hidden bg-obsidian">
       {/* 
         3D Gold / Warm Spotlight Glow:
         Positioned directly behind the top header to cast a luxurious ambient halo,
@@ -91,13 +91,13 @@ export default function Home() {
       */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-[20px] sm:top-[30px] md:top-[40px] left-1/2 -translate-x-1/2 w-full max-w-5xl h-[420px] sm:h-[480px] md:h-[540px] overflow-hidden -z-0 select-none"
+        className="pointer-events-none absolute top-5 sm:top-7.5 md:top-10 left-1/2 -translate-x-1/2 w-full max-w-5xl h-105 sm:h-120 md:h-135 overflow-hidden z-0 select-none"
       >
         {/* Core Warm Gold Spotlight */}
-        <div className="absolute top-[30px] left-1/2 -translate-x-1/2 w-[90vw] max-w-[750px] h-[260px] sm:h-[320px] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(226,177,93,0.18)_0%,rgba(196,142,54,0.08)_45%,transparent_75%)] blur-2xl" />
+        <div className="absolute top-7.5 left-1/2 -translate-x-1/2 w-[90vw] max-w-187.5 h-65 sm:h-80 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(226,177,93,0.18)_0%,rgba(196,142,54,0.08)_45%,transparent_75%)] blur-2xl" />
 
         {/* Extended Ambient Warm Glow for 3D depth */}
-        <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-[120vw] max-w-[1100px] h-[380px] sm:h-[440px] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(217,160,65,0.09)_0%,rgba(160,110,35,0.03)_50%,transparent_75%)] blur-3xl" />
+        <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-[120vw] max-w-275 h-95 sm:h-110 rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(217,160,65,0.09)_0%,rgba(160,110,35,0.03)_50%,transparent_75%)] blur-3xl" />
       </div>
 
       {/* 
@@ -110,10 +110,10 @@ export default function Home() {
           - Mobile (< md): Three separate lines (Nikhil Jaiswal / x / Micro Freelancing) with tight cohesive spacing
           - Desktop (md+): Restored to a single unified line with horizontal spacing
         */}
-        <h1 className="font-oswald text-[clamp(1.75rem,4.8vw,2.35rem)] md:text-[clamp(2.5rem,4vw,3.65rem)] font-normal tracking-[0.01em] text-[#F9F8FA] select-none flex flex-col md:flex-row items-center justify-center leading-[1.08] md:leading-none md:whitespace-nowrap">
+        <h1 className="font-oswald text-[clamp(1.75rem,4.8vw,2.35rem)] md:text-[clamp(2.5rem,4vw,3.65rem)] font-normal tracking-[0.01em] text-text-primary select-none flex flex-col md:flex-row items-center justify-center leading-[1.08] md:leading-none md:whitespace-nowrap">
           <span>Nikhil Jaiswal</span>
 
-          <span className="font-sans font-medium text-[#8C0808] text-[0.62em] md:text-[0.8em] my-1 sm:my-1.5 md:my-0 md:mx-3.5 lg:mx-4.5 leading-none select-none">
+          <span className="font-sans font-medium text-brand-red text-[0.62em] md:text-[0.8em] my-1 sm:my-1.5 md:my-0 md:mx-3.5 lg:mx-4.5 leading-none select-none">
             x
           </span>
 
@@ -124,7 +124,7 @@ export default function Home() {
           Tagline:
           Directly underneath with balanced breathing room
         */}
-        <p className="mt-4 sm:mt-5 md:mt-6 font-sans text-[clamp(0.8rem,1.9vw,1.35rem)] font-normal tracking-wide text-[#B4B4B4] antialiased">
+        <p className="mt-4 sm:mt-5 md:mt-6 font-sans text-[clamp(0.8rem,1.9vw,1.35rem)] font-normal tracking-wide text-text-secondary antialiased">
           No time? I&apos;ll do it for a dime....
         </p>
 
@@ -141,7 +141,7 @@ export default function Home() {
               href={link.href}
               target={link.name === "Email" ? undefined : "_blank"}
               rel={link.name === "Email" ? undefined : "noopener noreferrer"}
-              className="group relative flex items-center justify-center gap-2.5 py-1.5 px-3 transition-all duration-300 active:opacity-75 md:active:opacity-100 md:gap-3 md:px-6 md:py-3.5 md:rounded-full md:bg-[#111116]/85 md:border md:[border-color:var(--brand-border)] md:backdrop-blur-md md:hover:-translate-y-0.5 md:active:translate-y-0"
+              className="group relative flex items-center justify-center gap-2.5 py-1.5 px-3 transition-all duration-300 active:opacity-75 md:active:opacity-100 md:gap-3 md:px-6 md:py-3.5 md:rounded-full md:bg-[#111116]/85 md:border md:border-(--brand-border) md:backdrop-blur-md md:hover:-translate-y-0.5 md:active:translate-y-0"
               style={
                 {
                   "--brand-border": link.borderColor,
@@ -161,7 +161,7 @@ export default function Home() {
               />
 
               {/* Platform Logo */}
-              <span className="flex items-center justify-center w-5 h-5 md:w-7 md:h-7 md:rounded-full transition-colors duration-300 md:bg-[var(--brand-bg)]">
+              <span className="flex items-center justify-center w-5 h-5 md:w-7 md:h-7 md:rounded-full transition-colors duration-300 md:bg-(--brand-bg)">
                 {link.icon}
               </span>
 
@@ -176,6 +176,27 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* 
+        Value Proposition / Services Intro Section:
+        Positioned below the hero buttons with generous breathing room.
+      */}
+      <section className="relative z-10 w-full max-w-3xl mx-auto text-center mt-20 sm:mt-24 md:mt-28 pb-24 sm:pb-32 px-4">
+        {/* Main Section Heading */}
+        <h2 className="font-playwrite text-[clamp(1.35rem,3.2vw,2.25rem)] font-normal text-text-primary leading-snug">
+          Have a task but short on time?
+        </h2>
+
+        {/* Description in Grey */}
+        <p className="mt-3.5 sm:mt-4 md:mt-5 font-sans text-[clamp(0.925rem,1.8vw,1.15rem)] font-normal leading-relaxed text-text-secondary max-w-2xl mx-auto antialiased">
+          Delegate your small or medium desktop work to me and get it done on time and with quality.
+        </p>
+
+        {/* Subheading */}
+        <h3 className="mt-8 sm:mt-10 md:mt-12 font-playwrite text-[clamp(1.15rem,2.4vw,1.65rem)] font-normal text-text-primary leading-snug">
+          I can help you with:
+        </h3>
+      </section>
     </main>
   );
 }
