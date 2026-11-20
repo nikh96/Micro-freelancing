@@ -298,7 +298,7 @@ export default function Home() {
           Directly underneath with balanced breathing room
         */}
         <p className="mt-4 sm:mt-5 md:mt-6 font-sans text-[clamp(0.8rem,1.9vw,1.35rem)] font-normal tracking-wide text-text-secondary antialiased">
-          No time? I&apos;ll do it for a dime....
+          Got No time? I&apos;ll do it for a dime....
         </p>
 
         {/* 
@@ -446,12 +446,13 @@ export default function Home() {
           Capabilities / Services Grid:
           - Desktop view: Two-column grid layout matching the reference image
           - Mobile view: Single column vertical stack
+          - Clean, minimal layout without outer card backgrounds
         */}
-        <div className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-5 sm:gap-y-6 md:gap-y-7 w-full max-w-4xl mx-auto text-left">
+        <div className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16 gap-y-6 sm:gap-y-7 md:gap-y-8 w-full max-w-4xl mx-auto text-left">
           {serviceItems.map((service) => (
             <div
               key={service.title}
-              className="group flex items-start gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-white/2 border border-white/5 transition-all duration-300 hover:bg-white/4 hover:border-white/10"
+              className="group flex items-start gap-3.5 sm:gap-4.5 py-1"
             >
               {/* Icon Container */}
               <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/4 border border-white/10 text-text-primary shrink-0 transition-transform duration-300 group-hover:scale-105">

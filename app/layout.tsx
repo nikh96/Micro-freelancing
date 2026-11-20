@@ -34,7 +34,7 @@ const playwriteFRModerne = Playwrite_FR_Moderne({
 });
 
 export const metadata: Metadata = {
-  title: "Nikhil Jaiswal × Micro Freelancing",
+  title: "Nikhil Jaiswal",
   description: "No time? I'll do it for a dime....",
 };
 
