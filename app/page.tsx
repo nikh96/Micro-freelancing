@@ -15,6 +15,12 @@ interface ProcessStep {
   title: string;
 }
 
+interface ServiceItem {
+  title: string;
+  description: string;
+  icon: JSX.Element;
+}
+
 const processSteps: ProcessStep[] = [
   {
     step: 1,
@@ -27,6 +33,153 @@ const processSteps: ProcessStep[] = [
   {
     step: 3,
     title: "Get it done and pay the rest.",
+  },
+];
+
+const serviceItems: ServiceItem[] = [
+  {
+    title: "MS Office Work",
+    description: "(Excel, Word, PowerPoint, etc.)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zM9 13.5h6m-6 3.75h6"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Simple Websites / Platforms",
+    description: "(Frontend, basic backend, etc.)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Small Coding & Technical Tasks",
+    description: "(Scripts, bug fixes, basic projects, etc.)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Integrations & Setup",
+    description: "(WhatsApp Business, Payment Gateway, etc.)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6.495 3.1 1.354 4.35L2.25 21.75l4.89-1.282A9.704 9.704 0 0012 21.75c5.385 0 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25 2.25 6.615 2.25 12z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Data Handling & Analysis",
+    description: "(Data cleaning, charts, reports, etc.)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Design & Social Media Work",
+    description: "(Posts, banners, presentations – Canva, etc.)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "AI-based Tasks",
+    description: "(Research, content, summaries, etc.)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "College Projects & Other Work",
+    description: "(Academic or general desktop tasks)",
+    icon: (
+      <svg
+        className="w-5 h-5 sm:w-6 sm:h-6 stroke-current"
+        fill="none"
+        strokeWidth="1.75"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"
+        />
+      </svg>
+    ),
   },
 ];
 
@@ -201,7 +354,7 @@ export default function Home() {
         Value Proposition / Services Intro Section:
         Positioned below the hero buttons with generous breathing room.
       */}
-      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl mx-auto text-center mt-20 sm:mt-24 md:mt-28 pb-24 sm:pb-32 px-4">
+      <section className="relative z-10 w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center mt-20 sm:mt-24 md:mt-28 pb-24 sm:pb-32 px-4">
         {/* Main Section Heading */}
         <h2 className="font-playwrite text-[clamp(1.35rem,3.2vw,2.25rem)] font-normal text-text-primary leading-snug">
           Have a task but short on time?
@@ -214,24 +367,24 @@ export default function Home() {
 
         {/* 
           Step-by-step process:
-          - Desktop: Horizontal progression with right-pointing arrows
-          - Mobile: Vertical progression with down-pointing arrows
+          - Desktop: Horizontal progression with wider, more spacious cards extending gracefully to the left and right
+          - Mobile: Clean, container-free steps (no card backgrounds) with vertical progression
         */}
-        <div className="mt-9 sm:mt-11 md:mt-13 flex flex-col md:flex-row items-center justify-center gap-2.5 sm:gap-3 md:gap-2 lg:gap-3 w-full">
+        <div className="mt-9 sm:mt-11 md:mt-14 flex flex-col md:flex-row items-center justify-center gap-2 sm:gap-2.5 md:gap-3 lg:gap-4 w-full">
           {processSteps.map((item, idx) => (
             <div
               key={item.step}
               className="flex flex-col md:flex-row items-center justify-center w-full md:w-auto"
             >
-              {/* Step Item */}
-              <div className="flex items-center gap-3 px-4 py-2.5 sm:py-3 rounded-full bg-white/[0.03] border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20">
+              {/* Step Item: Glass pill card with smooth luxury hover elevation */}
+              <div className="group/step cursor-pointer flex items-center gap-3 px-4 sm:px-5 py-2.5 sm:py-3 md:px-6 lg:px-7 md:py-3.5 lg:py-4 rounded-full bg-white/3 border border-white/10 backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-white/6 hover:border-white/25 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.6),0_0_20px_-3px_rgba(226,177,93,0.12)] active:translate-y-0">
                 {/* Numbered Circle */}
-                <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-sans font-semibold text-text-primary shrink-0">
+                <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 md:w-8.5 md:h-8.5 lg:w-9 lg:h-9 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm md:text-sm lg:text-base font-sans font-semibold text-text-primary shrink-0 transition-all duration-300 group-hover/step:bg-white/20 group-hover/step:border-white/35 group-hover/step:scale-105">
                   {item.step}
                 </span>
 
                 {/* Step Text */}
-                <span className="font-sans text-xs sm:text-sm md:text-[0.925rem] font-medium text-text-primary whitespace-nowrap">
+                <span className="font-sans text-xs sm:text-sm md:text-base lg:text-[1.025rem] font-medium text-text-primary whitespace-nowrap transition-colors duration-300 group-hover/step:text-white">
                   {item.title}
                 </span>
               </div>
@@ -241,11 +394,11 @@ export default function Home() {
                 <>
                   {/* Desktop Horizontal Arrow */}
                   <div
-                    className="hidden md:flex items-center justify-center mx-2 lg:mx-3 text-white/35"
+                    className="hidden md:flex items-center justify-center mx-2.5 lg:mx-4 text-white/35 shrink-0"
                     aria-hidden="true"
                   >
                     <svg
-                      className="w-4 h-4 lg:w-5 lg:h-5"
+                      className="w-4.5 h-4.5 lg:w-5.5 lg:h-5.5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -261,7 +414,7 @@ export default function Home() {
 
                   {/* Mobile Vertical Arrow */}
                   <div
-                    className="flex md:hidden items-center justify-center my-1.5 text-white/35"
+                    className="flex md:hidden items-center justify-center my-1 text-white/35"
                     aria-hidden="true"
                   >
                     <svg
@@ -288,6 +441,35 @@ export default function Home() {
         <h3 className="mt-12 sm:mt-14 md:mt-16 font-playwrite text-[clamp(1.15rem,2.4vw,1.65rem)] font-normal text-text-primary leading-snug">
           I can help you with:
         </h3>
+
+        {/* 
+          Capabilities / Services Grid:
+          - Desktop view: Two-column grid layout matching the reference image
+          - Mobile view: Single column vertical stack
+        */}
+        <div className="mt-8 sm:mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-5 sm:gap-y-6 md:gap-y-7 w-full max-w-4xl mx-auto text-left">
+          {serviceItems.map((service) => (
+            <div
+              key={service.title}
+              className="group flex items-start gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-white/2 border border-white/5 transition-all duration-300 hover:bg-white/4 hover:border-white/10"
+            >
+              {/* Icon Container */}
+              <div className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/4 border border-white/10 text-text-primary shrink-0 transition-transform duration-300 group-hover:scale-105">
+                {service.icon}
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] font-semibold text-text-primary tracking-[-0.01em] leading-snug">
+                  {service.title}
+                </h4>
+                <p className="mt-1 font-sans text-xs sm:text-[0.875rem] text-text-secondary font-normal leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );
