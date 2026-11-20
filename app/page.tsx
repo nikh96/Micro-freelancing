@@ -1,4 +1,4 @@
-import type { JSX } from "react";
+import type { JSX, CSSProperties } from "react";
 
 interface SocialLink {
   name: string;
@@ -16,7 +16,7 @@ const socialLinks: SocialLink[] = [
     href: "https://wa.me/916268011085?text=Hii%20Nikhil%20!",
     brandColor: "#25D366",
     hoverGlow: "rgba(37,211,102,0.25)",
-    borderColor: "rgba(37,211,102,0.2)",
+    borderColor: "rgba(37,211,102,0.22)",
     iconBg: "rgba(37,211,102,0.12)",
     icon: (
       <svg
@@ -33,7 +33,7 @@ const socialLinks: SocialLink[] = [
     href: "https://linkedin.com/in/benikhil",
     brandColor: "#0A66C2",
     hoverGlow: "rgba(10,102,194,0.25)",
-    borderColor: "rgba(10,102,194,0.2)",
+    borderColor: "rgba(10,102,194,0.22)",
     iconBg: "rgba(10,102,194,0.12)",
     icon: (
       <svg
@@ -50,7 +50,7 @@ const socialLinks: SocialLink[] = [
     href: "mailto:nj7699844@gmail.com",
     brandColor: "#EA4335",
     hoverGlow: "rgba(234,67,53,0.25)",
-    borderColor: "rgba(234,67,53,0.2)",
+    borderColor: "rgba(234,67,53,0.22)",
     iconBg: "rgba(234,67,53,0.12)",
     icon: (
       <svg
@@ -128,28 +128,30 @@ export default function Home() {
         </p>
 
         {/* 
-          Action / Social Buttons:
-          - Desktop: Horizontal row with comfortable spacing
-          - Mobile: Clean vertical stack
-          - Styling: Minimal dark luxury glass pills with authentic brand accents and glowing hover states
+          Social Actions:
+          - Desktop: Luxury glass pill buttons with brand borders and glow
+          - Mobile: Clean, minimal, direct logo + text rows WITHOUT background cards or containers
         */}
-        <div className="mt-10 sm:mt-12 md:mt-14 flex flex-col items-center justify-center gap-3 sm:gap-3.5 w-full max-w-xs sm:max-w-sm mx-auto md:max-w-none md:flex-row md:gap-4 lg:gap-5">
+        <div className="mt-9 sm:mt-11 md:mt-14 flex flex-col items-center justify-center gap-3.5 sm:gap-4 md:flex-row md:gap-4 lg:gap-5 w-auto mx-auto">
           {socialLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               target={link.name === "Email" ? undefined : "_blank"}
               rel={link.name === "Email" ? undefined : "noopener noreferrer"}
-              className="group relative flex items-center justify-center gap-3 w-full md:w-auto px-5 py-3 md:px-6 md:py-3.5 rounded-full bg-[#111116]/85 border transition-all duration-300 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0"
-              style={{
-                borderColor: link.borderColor,
-                boxShadow: `0 4px 20px -2px rgba(0, 0, 0, 0.5)`,
-              }}
+              className="group relative flex items-center justify-center gap-2.5 py-1.5 px-3 transition-all duration-300 active:opacity-75 md:active:opacity-100 md:gap-3 md:px-6 md:py-3.5 md:rounded-full md:bg-[#111116]/85 md:border md:[border-color:var(--brand-border)] md:backdrop-blur-md md:hover:-translate-y-0.5 md:active:translate-y-0"
+              style={
+                {
+                  "--brand-border": link.borderColor,
+                  "--brand-glow": link.hoverGlow,
+                  "--brand-bg": link.iconBg,
+                } as CSSProperties
+              }
             >
-              {/* Subtle hover backlight glow */}
+              {/* Subtle hover backlight glow (Desktop only) */}
               <span
                 aria-hidden="true"
-                className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10"
+                className="hidden md:block absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10"
                 style={{
                   boxShadow: `0 0 25px ${link.hoverGlow}`,
                   backgroundColor: link.iconBg,
@@ -157,16 +159,13 @@ export default function Home() {
               />
 
               {/* Platform Logo */}
-              <span
-                className="flex items-center justify-center w-7 h-7 rounded-full transition-colors duration-300"
-                style={{ backgroundColor: link.iconBg }}
-              >
+              <span className="flex items-center justify-center w-5 h-5 md:w-7 md:h-7 md:rounded-full transition-colors duration-300 md:bg-[var(--brand-bg)]">
                 {link.icon}
               </span>
 
               {/* Platform Name in Playwrite France Moderne */}
               <span
-                className="font-playwrite text-[0.95rem] md:text-[1.05rem] font-normal transition-colors duration-300 group-hover:brightness-125"
+                className="font-playwrite text-[1rem] md:text-[1.05rem] font-normal transition-colors duration-300 group-hover:brightness-125"
                 style={{ color: link.brandColor }}
               >
                 {link.name}
