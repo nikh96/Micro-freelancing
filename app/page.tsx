@@ -749,21 +749,18 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="group/link inline-flex items-center gap-2.5 sm:gap-3 w-fit text-text-primary transition-colors duration-200 hover:text-white"
               >
-                {/* Logo without background cards or containers */}
+                {/* Logo without background cards, uniformly sized and circular where needed */}
                 {site.logo ? (
-                  <div className="relative shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 transition-transform duration-300 group-hover/link:scale-105">
+                  <div className="relative shrink-0 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 transition-transform duration-300 group-hover/link:scale-105">
                     <Image
                       src={site.logo}
                       alt={site.title}
-                      width={36}
-                      height={36}
-                      className="object-contain max-h-8 max-w-8 sm:max-h-9 sm:max-w-9"
-                      style={{ width: "auto", height: "auto" }}
+                      width={40}
+                      height={40}
+                      className={`object-contain w-9 h-9 sm:w-10 sm:h-10 ${
+                        site.title === "Tabiji Trails" ? "rounded-full" : ""
+                      }`}
                     />
-                  </div>
-                ) : site.icon ? (
-                  <div className="relative shrink-0 flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-text-primary/80 transition-transform duration-300 group-hover/link:scale-105">
-                    {site.icon}
                   </div>
                 ) : null}
 
