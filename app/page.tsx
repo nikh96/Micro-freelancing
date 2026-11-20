@@ -91,13 +91,13 @@ export default function Home() {
       */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-[20px] sm:top-[30px] md:top-[40px] left-1/2 -translate-x-1/2 w-full max-w-5xl h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden -z-0 select-none"
+        className="pointer-events-none absolute top-[20px] sm:top-[30px] md:top-[40px] left-1/2 -translate-x-1/2 w-full max-w-5xl h-[420px] sm:h-[480px] md:h-[540px] overflow-hidden -z-0 select-none"
       >
         {/* Core Warm Gold Spotlight */}
-        <div className="absolute top-[30px] left-1/2 -translate-x-1/2 w-[90vw] max-w-[750px] h-[220px] sm:h-[280px] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(226,177,93,0.18)_0%,rgba(196,142,54,0.08)_45%,transparent_75%)] blur-2xl" />
+        <div className="absolute top-[30px] left-1/2 -translate-x-1/2 w-[90vw] max-w-[750px] h-[260px] sm:h-[320px] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(226,177,93,0.18)_0%,rgba(196,142,54,0.08)_45%,transparent_75%)] blur-2xl" />
 
         {/* Extended Ambient Warm Glow for 3D depth */}
-        <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-[120vw] max-w-[1100px] h-[340px] sm:h-[400px] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(217,160,65,0.09)_0%,rgba(160,110,35,0.03)_50%,transparent_75%)] blur-3xl" />
+        <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 w-[120vw] max-w-[1100px] h-[380px] sm:h-[440px] rounded-[100%] bg-[radial-gradient(ellipse_at_center,rgba(217,160,65,0.09)_0%,rgba(160,110,35,0.03)_50%,transparent_75%)] blur-3xl" />
       </div>
 
       {/* 
@@ -107,13 +107,14 @@ export default function Home() {
       <div className="relative z-10 w-full max-w-6xl text-center">
         {/* 
           Main Title:
-          Strictly kept on a SINGLE LINE across all devices
+          - Mobile (< md): Three separate lines (Nikhil Jaiswal / x / Micro Freelancing) with tight cohesive spacing
+          - Desktop (md+): Restored to a single unified line with horizontal spacing
         */}
-        <h1 className="font-serif-condensed whitespace-nowrap text-[clamp(1.15rem,4.5vw,3.85rem)] font-normal tracking-[-0.015em] text-[#F9F8FA] leading-none select-none flex items-center justify-center">
+        <h1 className="font-oswald text-[clamp(1.75rem,4.8vw,2.35rem)] md:text-[clamp(2.5rem,4vw,3.65rem)] font-normal tracking-[0.01em] text-[#F9F8FA] select-none flex flex-col md:flex-row items-center justify-center leading-[1.08] md:leading-none md:whitespace-nowrap">
           <span>Nikhil Jaiswal</span>
 
-          <span className="font-sans font-semibold text-[#8C0808] mx-1.5 sm:mx-2.5 md:mx-4 lg:mx-4.5 text-[0.8em] md:text-[0.82em]">
-            X
+          <span className="font-sans font-medium text-[#8C0808] text-[0.62em] md:text-[0.8em] my-1 sm:my-1.5 md:my-0 md:mx-3.5 lg:mx-4.5 leading-none select-none">
+            x
           </span>
 
           <span>Micro Freelancing</span>
@@ -121,9 +122,9 @@ export default function Home() {
 
         {/* 
           Tagline:
-          Directly underneath on its own line
+          Directly underneath with balanced breathing room
         */}
-        <p className="mt-3 sm:mt-4 md:mt-5 font-sans text-[clamp(0.72rem,1.9vw,1.35rem)] font-normal tracking-wide text-[#B4B4B4] antialiased whitespace-nowrap">
+        <p className="mt-4 sm:mt-5 md:mt-6 font-sans text-[clamp(0.8rem,1.9vw,1.35rem)] font-normal tracking-wide text-[#B4B4B4] antialiased">
           No time? I&apos;ll do it for a dime....
         </p>
 

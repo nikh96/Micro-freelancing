@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Noto_Serif, Noto_Serif_Ethiopic, Playwrite_FR_Moderne } from "next/font/google";
+import { Inter, Noto_Serif, Noto_Serif_Ethiopic, Oswald, Playwrite_FR_Moderne } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -46,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${notoSerif.variable} ${notoSerifEthiopic.variable} ${playwriteFRModerne.variable}`}
+      className={`${inter.variable} ${oswald.variable} ${notoSerif.variable} ${notoSerifEthiopic.variable} ${playwriteFRModerne.variable}`}
     >
       <body
         suppressHydrationWarning
