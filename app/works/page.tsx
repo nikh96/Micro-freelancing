@@ -1,57 +1,6 @@
 import Link from "next/link";
 import ProjectVideoPlayer from "@/app/components/ProjectVideoPlayer";
-
-interface ShowcaseProject {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  link?: {
-    label: string;
-    href: string;
-  };
-  hasVideoPlaceholder?: boolean;
-}
-
-const projects: ShowcaseProject[] = [
-  {
-    id: "varidhi",
-    title: "Varidhi",
-    category: "Frontend Engineering & Concept Design (College Project)",
-    description:
-      "A complete frontend travel platform concept offering curated 15-day voyages across 10 selected islands worldwide. Features a group-booking mechanism requiring a minimum of five travellers for trips to commence, engineered entirely without a backend.",
-    link: {
-      label: "varidhi.netlify.app",
-      href: "https://varidhi.netlify.app",
-    },
-  },
-  {
-    id: "ai-video",
-    title: "AI Video Generation",
-    category: "AI Research & Generative Media",
-    description:
-      "Conducted extensive research across generative video platforms to identify the optimal tool for business advertisements. Generated comparative test suites and delivered a client-selected commercial produced via Omni Video Generation.",
-    hasVideoPlaceholder: true,
-  },
-  {
-    id: "trading-automation",
-    title: "Integration & Automation",
-    category: "FinTech & Webhook Automation",
-    description:
-      "An automated 24/7 trade execution pipeline connecting TradingView strategy alerts directly to Delta Exchange via secure webhooks. Dispatches real-time BUY and SELL signals for hands-free trading with continuous reliability.",
-  },
-  {
-    id: "living-soundscapes",
-    title: "Deep Research – Global Musical Instruments & Cultural Heritage",
-    category: "Cultural Ethnography & In-Depth Research",
-    description:
-      "A comprehensive cross-cultural research initiative documenting traditional musical instruments and melodic traditions across the UK, USA, Canada, India, and Europe. Mapped by territories and provinces into an archived digital showcase and client monograph.",
-    link: {
-      label: "sites.google.com/view/living-soundscapes",
-      href: "https://sites.google.com/view/living-soundscapes?usp=sharing",
-    },
-  },
-];
+import { getProjects } from "@/lib/projects";
 
 export const metadata = {
   title: "Explore Works | Nikhil Jaiswal",
@@ -59,6 +8,8 @@ export const metadata = {
 };
 
 export default function WorksPage() {
+  const projects = getProjects();
+
   return (
     <main className="relative flex min-h-screen w-full flex-col items-center pt-16 sm:pt-20 md:pt-24 pb-20 sm:pb-24 px-4 sm:px-6 md:px-8 bg-obsidian text-text-primary antialiased">
       {/* Ambient Gold & Red Spotlight Glow */}
@@ -114,11 +65,6 @@ export default function WorksPage() {
                 />
               )}
 
-              {/* Category */}
-              <span className="font-sans text-xs sm:text-sm font-medium text-text-secondary/70">
-                {project.category}
-              </span>
-
               {/* Title */}
               <h2 className="font-sans text-lg sm:text-xl md:text-2xl font-semibold text-text-primary tracking-tight">
                 {project.title}
@@ -129,16 +75,16 @@ export default function WorksPage() {
                 {project.description}
               </p>
 
-              {/* Live Link: Bold, White, Non-red */}
-              {project.link && (
+              {/* Dynamic Content: Link (Bold, White, Non-red) */}
+              {project.contentType === "link" && project.linkUrl && (
                 <div className="pt-0.5">
                   <a
-                    href={project.link.href}
+                    href={project.linkUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 font-sans text-sm sm:text-base font-bold text-white hover:text-white/80 underline underline-offset-4 decoration-white/40 hover:decoration-white transition-all w-fit"
                   >
-                    <span>{project.link.label}</span>
+                    <span>{project.linkUrl.replace(/^https?:\/\//, "")}</span>
                     <svg
                       className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"
                       fill="none"
@@ -156,9 +102,21 @@ export default function WorksPage() {
                 </div>
               )}
 
-              {/* Play / Pause Video for Project 2 */}
-              {project.hasVideoPlaceholder && (
-                <ProjectVideoPlayer src="/omni-ad.mp4" />
+              {/* Dynamic Content: Video Player with Play/Pause Button */}
+              {project.contentType === "video" && project.videoFile && (
+                <ProjectVideoPlayer src={`/${project.videoFile}`} />
+              )}
+
+              {/* Dynamic Content: Image from public folder */}
+              {project.contentType === "image" && project.imageFile && (
+                <div className="mt-2 w-full max-w-xl rounded-2xl overflow-hidden border border-white/10 bg-white/2 shadow-xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/${project.imageFile}`}
+                    alt={project.title}
+                    className="w-full h-auto object-cover max-h-96"
+                  />
+                </div>
               )}
             </article>
           ))}
