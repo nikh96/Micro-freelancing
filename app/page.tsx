@@ -3,6 +3,7 @@
 import { useState, useEffect, type JSX, type CSSProperties } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import WorksSkeleton from "@/app/components/WorksSkeleton";
 
 interface SocialLink {
   name: string;
@@ -296,7 +297,7 @@ export default function Home() {
     setIsOpeningWorks(true);
     setTimeout(() => {
       router.push("/works");
-    }, 450);
+    }, 600);
   };
 
   useEffect(() => {
@@ -898,25 +899,13 @@ export default function Home() {
           </div>
         </div>
       )}
-      {/* Dynamic Luxurious Curtain Portal Animation when opening Works page */}
+      {/* YouTube-style Skeleton Loading Screen when opening Works */}
       {isOpeningWorks && (
         <div
           aria-hidden="true"
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-obsidian/95 backdrop-blur-2xl animate-luxury-portal transition-all duration-450 pointer-events-auto"
+          className="fixed inset-0 z-50 overflow-y-auto bg-obsidian transition-opacity duration-300 pointer-events-auto"
         >
-          {/* Ambient expanding halo */}
-          <div className="absolute w-[80vw] max-w-lg aspect-square rounded-full bg-[radial-gradient(circle_at_center,rgba(226,177,93,0.22)_0%,rgba(140,8,8,0.35)_45%,transparent_75%)] blur-3xl animate-pulse" />
-
-          {/* Luxury loading presentation */}
-          <div className="relative z-10 flex flex-col items-center">
-            <div className="w-12 h-12 rounded-full border-2 border-brand-red border-t-white animate-spin mb-4" />
-            <h4 className="font-playwrite text-xl text-text-primary tracking-wide">
-              Entering Portfolio...
-            </h4>
-            <span className="font-sans text-xs text-white/50 mt-1.5 tracking-wider">
-              Preparing curated showcase
-            </span>
-          </div>
+          <WorksSkeleton />
         </div>
       )}
     </main>

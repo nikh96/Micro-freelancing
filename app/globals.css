@@ -88,3 +88,18 @@ body {
 .animate-luxury-portal {
   animation: luxuryPortal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* YouTube-style Skeleton Shimmer */
+@keyframes skeletonShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-skeleton-shimmer {
+  animation: skeletonShimmer 1.5s infinite ease-in-out;
+}
+
