@@ -33,9 +33,7 @@ interface Certification {
 interface ProjectSite {
   title: string;
   url: string;
-  logo?: string;
-  icon?: JSX.Element;
-  status?: string;
+  logo: string;
   description: string;
 }
 
@@ -58,7 +56,6 @@ const projects: ProjectSite[] = [
     title: "Thenikflow",
     url: "https://thenikflow.com",
     logo: "/tnf.png",
-    status: "Discontinued",
     description:
       "Thenikflow is a digital media platform and content brand created by Nikhil Jaiswal, focusing on startup stories, essays, career roadmaps, conversations, and curated gear.",
   },
@@ -733,14 +730,9 @@ export default function Home() {
                   </div>
                 ) : null}
 
-                {/* Title & Status */}
-                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] md:text-[1.125rem] font-semibold tracking-[-0.01em] transition-colors duration-200 group-hover/link:text-white flex items-center gap-2 flex-wrap">
+                {/* Title */}
+                <h4 className="font-sans text-[0.975rem] sm:text-[1.05rem] md:text-[1.125rem] font-semibold tracking-[-0.01em] transition-colors duration-200 group-hover/link:text-white flex items-center gap-1.5">
                   <span>{site.title}</span>
-                  {site.status && (
-                    <span className="text-[#EA4335] font-sans text-xs sm:text-[0.825rem] font-medium">
-                      ({site.status})
-                    </span>
-                  )}
                   <svg
                     className="w-3.5 h-3.5 text-text-secondary opacity-60 transition-all duration-200 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-brand-red shrink-0"
                     fill="none"
