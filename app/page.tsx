@@ -2,6 +2,7 @@
 
 import { useState, useEffect, type JSX, type CSSProperties } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface SocialLink {
   name: string;
@@ -287,7 +288,16 @@ const socialLinks: SocialLink[] = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+  const [isOpeningWorks, setIsOpeningWorks] = useState(false);
+
+  const handleOpenWorks = () => {
+    setIsOpeningWorks(true);
+    setTimeout(() => {
+      router.push("/works");
+    }, 450);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -487,6 +497,47 @@ export default function Home() {
               )}
             </div>
           ))}
+        </div>
+
+        {/* 
+          "See My Works" Luxury Statement Button:
+          Positioned prominently in the middle of "Have a task but short on time?" 
+          and "I can help you with:".
+        */}
+        <div className="mt-10 sm:mt-12 md:mt-14 flex flex-col items-center justify-center">
+          <button
+            type="button"
+            onClick={handleOpenWorks}
+            disabled={isOpeningWorks}
+            className="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-brand-red text-text-primary font-playwrite text-base sm:text-lg md:text-xl font-normal shadow-[0_4px_30px_-4px_rgba(140,8,8,0.7),0_0_35px_rgba(226,177,93,0.18)] border border-white/20 transition-all duration-400 ease-out hover:bg-[#a30b0b] hover:shadow-[0_0_45px_rgba(140,8,8,0.9),0_0_50px_rgba(226,177,93,0.3)] hover:scale-[1.03] active:scale-[0.98] cursor-pointer overflow-hidden"
+          >
+            {/* Shimmer light reflection effect */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 ease-in-out group-hover:translate-x-full pointer-events-none"
+            />
+
+            <span>See My Works</span>
+
+            {/* Glowing Arrow / Star Icon */}
+            <svg
+              className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </button>
+
+          <span className="mt-2.5 font-sans text-[0.7rem] sm:text-xs text-white/45 tracking-widest uppercase">
+            Curated Deliveries &amp; Case Studies
+          </span>
         </div>
 
         {/* Subheading */}
@@ -842,6 +893,27 @@ export default function Home() {
               className="object-contain"
               priority
             />
+          </div>
+        </div>
+      )}
+      {/* Dynamic Luxurious Curtain Portal Animation when opening Works page */}
+      {isOpeningWorks && (
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-obsidian/95 backdrop-blur-2xl animate-luxury-portal transition-all duration-450 pointer-events-auto"
+        >
+          {/* Ambient expanding halo */}
+          <div className="absolute w-[80vw] max-w-lg aspect-square rounded-full bg-[radial-gradient(circle_at_center,rgba(226,177,93,0.22)_0%,rgba(140,8,8,0.35)_45%,transparent_75%)] blur-3xl animate-pulse" />
+
+          {/* Luxury loading presentation */}
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="w-12 h-12 rounded-full border-2 border-brand-red border-t-white animate-spin mb-4" />
+            <h4 className="font-playwrite text-xl text-text-primary tracking-wide">
+              Entering Portfolio...
+            </h4>
+            <span className="font-sans text-xs text-white/50 mt-1.5 tracking-wider">
+              Preparing curated showcase
+            </span>
           </div>
         </div>
       )}

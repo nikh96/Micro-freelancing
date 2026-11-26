@@ -63,3 +63,28 @@ body {
 .font-body {
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
+
+/* Custom scrollbar hiding utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Luxury Curtain Animation */
+@keyframes luxuryPortal {
+  0% {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    backdrop-filter: blur(20px);
+  }
+}
+
+.animate-luxury-portal {
+  animation: luxuryPortal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
