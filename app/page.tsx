@@ -318,7 +318,10 @@ export default function Home() {
   }, [isPhotoOpen]);
 
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center pt-25 px-4 sm:px-6 md:px-8 overflow-hidden bg-obsidian">
+    <main
+      suppressHydrationWarning
+      className="relative flex min-h-screen w-full flex-col items-center pt-25 px-4 sm:px-6 md:px-8 overflow-hidden bg-obsidian"
+    >
       {/* 
         3D Gold / Warm Spotlight Glow:
         Positioned directly behind the top header to cast a luxurious ambient halo,
@@ -504,7 +507,10 @@ export default function Home() {
           Positioned prominently in the middle of "Have a task but short on time?" 
           and "I can help you with:".
         */}
-        <div className="mt-10 sm:mt-12 md:mt-14 flex flex-col items-center justify-center">
+        <div
+          suppressHydrationWarning
+          className="mt-10 sm:mt-12 md:mt-14 flex flex-col items-center justify-center"
+        >
           <button
             type="button"
             onClick={handleOpenWorks}
@@ -534,10 +540,6 @@ export default function Home() {
               />
             </svg>
           </button>
-
-          <span className="mt-2.5 font-sans text-[0.7rem] sm:text-xs text-white/45 tracking-widest uppercase">
-            Curated Deliveries &amp; Case Studies
-          </span>
         </div>
 
         {/* Subheading */}
